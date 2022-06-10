@@ -1,0 +1,24 @@
+﻿@model IEnumerable<LAb6.Models.Category>
+
+@{
+    ViewData["Title"] = "Forum";
+}
+
+<h1>Forum</h1>
+
+<div class="list-group">
+    <a asp-controller="Categories" asp-action="Create">
+        Create New
+    </a>
+</div>
+
+<br />
+
+@foreach (var item in Model) {
+    <div class="alert alert-primary" role="alert">
+        <h3><a class="alert-heading" asp-action="SingleForum">@Html.DisplayFor(modelItem => item.Name)</a></h3>
+        <hr>
+        <a asp-controller="Categories" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+        <a asp-controller="Categories" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+    </div>
+}
